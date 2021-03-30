@@ -4,7 +4,7 @@ import Header from './Components/Header';
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+      <Header />
       {/* <Sidebar></Sidebar> */}
       {/* <recommendedVideos></recommendedVideos> */}
       {/* <AppBar></AppBar> */}
