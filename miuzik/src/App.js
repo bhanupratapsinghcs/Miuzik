@@ -1,13 +1,21 @@
 import AppBar from './Components/AppBar';
 import Header from './Components/Header';
+import Sidebar from './Components/Sidebar';
+import RecommendedVideos from './ComponentsRecommendedVideos';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Sidebar></Sidebar> */}
-      {/* <recommendedVideos></recommendedVideos> */}
-      {/* <AppBar></AppBar> */}
+      <div className="app_page">
+        
+        <Sidebar />
+
+        <recommendedVideos />
+        
+        {/* <AppBar></AppBar> */}
+      
+      </div>
     </div>
   );
 }
