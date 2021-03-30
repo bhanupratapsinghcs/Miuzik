@@ -2,9 +2,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: black;
+    background-color: transparent;
     padding: 0px 20px;
     height: 60px;
+    position: sticky;
+}
+
+.header{
+
 }
 
 .header-logo{
@@ -25,7 +30,8 @@
 
 .header_input{
     width: 40%;
-    border: 1px solid white;
+    border: 1px solid gray;
+    background-color:rgb(22, 21, 21);
     /* border-radius: 5px; */
 }
 
@@ -35,6 +41,7 @@
     outline: none;
     line-height: 24px;
     padding-left: 10px;
+    background-color:rgb(22, 21, 21);
 }
 
 .menuIcon, .signedIn, .threeDots{
@@ -47,7 +54,7 @@
 
 .header_inputButton{
     width: 50px !important;
-    background-color: #fafafa;
+    background-color:rgb(22, 21, 21);
     color: grey;
     border-left: 1px solid lightgray;
 }
