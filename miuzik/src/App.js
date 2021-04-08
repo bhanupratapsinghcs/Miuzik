@@ -1,7 +1,8 @@
 import AppBar from './Components/AppBar';
 import Header from './Components/Header';
 import Sidebar from './Components/Sidebar';
-import RecommendedVideos from './ComponentsRecommendedVideos';
+import RecommendedVideos from './Components/RecommendedVideos';
+import './App.css';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         
         <Sidebar />
 
-        <recommendedVideos />
+        <RecommendedVideos />
         
         {/* <AppBar></AppBar> */}
       
