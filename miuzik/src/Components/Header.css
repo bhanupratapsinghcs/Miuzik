@@ -21,20 +21,23 @@
     display: inline-block;
 }
 
-.header_icons, .header_input, .header_left{
+.header_icons, .header_left{
     display: flex;
     align-items: center;
 }
 
 .header_input{
-    width: 40%;
+    display: none;
+    /* display: flex; */
+    flex: 0.5;
+    align-items: center;
     border: 1px solid gray;
     background-color:rgb(22, 21, 21);
     /* border-radius: 5px; */
 }
 
 .header_input > input{
-    flex: 1;    /*  increases the width of the input  */
+    flex: 1;    /* increases the width of the input */
     border: none;
     outline: none;
     line-height: 24px;
@@ -55,5 +58,50 @@
     width: 50px !important;
     background-color:rgb(22, 21, 21);
     color: grey;
-    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+.header_inputButton:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.header_left:hover, .header_icons:hover {
+    cursor: pointer;     /*   we will change classes accordingly later on when we will provide the click functionality  */
+}
+
+.header_list {
+    list-style: none;
+    display: flex;
+    /* display: none; */
+    flex: 0.45;
+    justify-content: space-evenly;
+    font-size: 22px;
+    color: grey;
+}
+
+
+.header_list > li > a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.header_list > li > a:hover .search-icon {
+    color: white;
+    cursor: pointer;
+}
+
+.header_list > li > a {
+    display: inline-flex;
+    height: 30px;
+    padding: 1px 5px; 
+    text-align: center;
+    line-height: 30px;   
+}
+
+.search-icon {
+    height: 18px;
+    margin-top: 3px;
+    margin-right: 10px;
+    color: grey;
 }
