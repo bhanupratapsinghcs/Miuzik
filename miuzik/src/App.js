@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Pages/Home';
 import Explore from './Pages/Explore';
 import Library from './Pages/Library';
-import Login from './Login'
+import Login from './Auth/Login'
+import useAuth from './Auth/useAuth'
 
 const code = new URLSearchParams(window.location.search).get("code")
 
 function App() {
+  const accessToken = useAuth(code);
   return (
     code ?
       <Router>
