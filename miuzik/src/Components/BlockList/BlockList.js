@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 
 export default function BlockList({ code }) {
     const accessToken = useAuth(code);
-    const [data, setData] = useState([]);
     const [recommendation, setRecommendation] = useState([]);
 
     const classes = useStyles();
@@ -45,7 +44,7 @@ export default function BlockList({ code }) {
             min_popularity: 50
         }).then(data => {
             setRecommendation(data.body.tracks.map(track => {
-                console.log(track)
+                // console.log(track)
                 return {
                     artist: track.album.artists[0].name,
                     title: track.name,
@@ -58,14 +57,7 @@ export default function BlockList({ code }) {
         });
 
     }, [accessToken])
-    console.log(recommendation);
-
-
-    useEffect(() => {
-        fetch("https://finalspaceapi.com/api/v0/character/?limit=12")
-            .then((res) => res.json())
-            .then((data) => setData(data));
-    }, []);
+    // console.log(recommendation);
     return (
         <div>
             <Container>
@@ -78,14 +70,6 @@ export default function BlockList({ code }) {
                             <Grid item xs={12} sm={4} key={track.uri}>
                                 <Card className={classes.card}>
                                     <CardMedia className={classes.media} image={track.albumUrl} />
-                                    {/* <CardContent>
-                                        <Typography color="primary" variant="h5">
-                                            {character.name}
-                                        </Typography>
-                                        <Typography color="textSecondary" variant="subtitle2">
-                                            {character.status}
-                                        </Typography>
-                                    </CardContent> */}
                                 </Card>
                             </Grid>
                         ))

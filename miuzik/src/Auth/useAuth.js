@@ -8,7 +8,7 @@ export default function useAuth(code) {
     const [accessToken, setAccessToken] = useState()
     const [refreshToken, setRefreshToken] = useState()
     const [expiresIn, setExpiresIn] = useState()
-
+    // console.log(code)
     useEffect(() => {
 
         // calling server for login data
@@ -19,6 +19,7 @@ export default function useAuth(code) {
 
 
             // set data
+            console.log(res.data)
 
             setAccessToken(res.data.accessToken)
             setRefreshToken(res.data.refreshToken)
@@ -27,12 +28,13 @@ export default function useAuth(code) {
 
             // to remove acccess token from search bar
 
-            window.history.pushState({}, null, '/')
-        }).catch(() => {
+            // window.history.pushState({}, null, '/')
+        }).catch((err) => {
 
             // to redirect user to login page when token  expires
+            console.log(err)
 
-            window.history.pushState({}, null, '/')
+            window.location = '/'
         })
     }, [code])
 

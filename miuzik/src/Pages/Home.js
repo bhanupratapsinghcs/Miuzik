@@ -1,34 +1,19 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
+import BlockList from '../Components/BlockList/BlockList'
 
-function Home() {
+
+function Home({ code }) {
     return (
 
         /*      This page is For Home related Code.     ! Note: before deletion discuss your approach once      */
+        <>
+            <Container fixed>
+                <BlockList code={code}></BlockList>
+            </Container>
 
-        <div style={{ backgroundColor: 'black' }}>
-            <h3 style={{ color: 'white' }}>Home</h3>
+        </>
 
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-        </div>
     )
 }
 
