@@ -7,7 +7,7 @@ export default function Login() {
     console.log("login")
     return (
         <div>
-            <Button href={AUTH_URL}>Login
+            <Button href={AUTH_URL} variant="contained">Login
             </Button>
         </div>
     )
