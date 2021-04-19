@@ -6,11 +6,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import SpotifyWebApi from 'spotify-web-api-node'
-
-const spotifyApi = new SpotifyWebApi({
-    clientId: '0adaf2a4ad6248869d5b1acf78494f58',
-})
 
 const useStyles = makeStyles({
     card: {
@@ -23,49 +18,18 @@ const useStyles = makeStyles({
     },
 });
 
-export default function BlockList({ code }) {
-    const accessToken = code;
-    const [recommendation, setRecommendation] = useState([]);
+export default function BlockList(props) {
 
     const classes = useStyles();
-
-    useEffect(() => {
-        if (!accessToken) return
-        spotifyApi.setAccessToken(accessToken)
-
-    }, [accessToken])
-
-    useEffect(() => {
-        if (!accessToken) return;
-        spotifyApi.getRecommendations({
-            min_energy: 0.4,
-            seed_artists: ['6mfK6Q2tzLMEchAr0e9Uzu', '4DYFVNKZ1uixa6SQTvzQwJ'],
-            min_popularity: 50
-        }).then(data => {
-            setRecommendation(data.body.tracks.map(track => {
-                // console.log(track)
-                return {
-                    artist: track.album.artists[0].name,
-                    title: track.name,
-                    uri: track.uri,
-                    albumUrl: track.album.images[1].url,
-                }
-            }))
-        }).catch((err) => {
-            console.log("Something went wrong!", err);
-        });
-
-    }, [accessToken])
-    // console.log(recommendation);
     return (
         <div>
             <Container>
                 <Typography color="textPrimary" gutterBottom variant="h2" align="left">
-                    Recommendation
+                    {props.data.title}
                 </Typography>
                 <Grid container spacing={3}>
                     {
-                        recommendation.map((track) => (
+                        props.data.tracks.map((track) => (
                             <Grid item xs={12} sm={4} key={track.uri}>
                                 <Card className={classes.card}>
                                     <CardMedia className={classes.media} image={track.albumUrl} />
