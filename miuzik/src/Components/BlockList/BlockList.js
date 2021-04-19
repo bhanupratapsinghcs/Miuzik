@@ -7,7 +7,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import SpotifyWebApi from 'spotify-web-api-node'
-import useAuth from '../../Auth/useAuth'
 
 const spotifyApi = new SpotifyWebApi({
     clientId: '0adaf2a4ad6248869d5b1acf78494f58',
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 export default function BlockList({ code }) {
-    const accessToken = useAuth(code);
+    const accessToken = code;
     const [recommendation, setRecommendation] = useState([]);
 
     const classes = useStyles();

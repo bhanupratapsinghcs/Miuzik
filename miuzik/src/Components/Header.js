@@ -77,7 +77,7 @@ function Header() {
                 </ul>
                 :
                 <ul className='header_list' style={{ minWidth: '450px' }}>
-                    <li><Link to='' className='anchor' >Home</Link></li>
+                    <li><Link to='/' className='anchor' >Home</Link></li>
                     <li><Link to='/Pages/Explore' className='anchor' >Explore</Link></li>
                     <li><Link to='/Pages/Library' className='anchor' >Library</Link></li>
                     <li><Link to='#' onClick={handleClick} className='anchor' ><Icons.Search className='search-icon' />Search</Link></li>

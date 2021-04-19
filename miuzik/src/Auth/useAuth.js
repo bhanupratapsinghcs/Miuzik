@@ -33,7 +33,7 @@ export default function useAuth(code) {
             // to redirect user to login page when token  expires
             console.log(err)
 
-            window.location = '/'
+            // window.location = '/'
         })
     }, [code])
 
