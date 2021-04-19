@@ -1,15 +1,15 @@
 import React from 'react'
 import Container from '@material-ui/core/Container'
-import BlockList from '../Components/BlockList/BlockList'
-
+import Recommendation from '../Components/Lists/Recommendations'
+import NewRelease from '../Components/Lists/NewReleases'
 
 function Home({ code }) {
     return (
 
-        /*      This page is For Home related Code.     ! Note: before deletion discuss your approach once      */
         <>
             <Container fixed>
-                <BlockList code={code}></BlockList>
+                <Recommendation code={code}></Recommendation>
+                <NewRelease code={code}></NewRelease>
             </Container>
 
         </>
