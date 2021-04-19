@@ -31,7 +31,7 @@ function App() {
           <Switch>
             <Route exact path='/'><Home code={accessToken} /></Route>
             <Route exact path='/Pages/Home'><Home code={accessToken}></Home></Route>
-            <Route path='/Pages/Explore'> <Explore code={accessToken} /></Route>
+            <Route path='/Pages/Explore'> <Explore accessToken={accessToken} /></Route>
             <Route path='/Pages/Library' component={Library}></Route>
           </Switch>
 
