@@ -19,7 +19,6 @@ export default function useAuth(code) {
 
 
             // set data
-            console.log(res.data)
 
             setAccessToken(res.data.accessToken)
             setRefreshToken(res.data.refreshToken)
@@ -28,7 +27,7 @@ export default function useAuth(code) {
 
             // to remove acccess token from search bar
 
-            // window.history.pushState({}, null, '/')
+            window.history.pushState({}, null, '/')
         }).catch((err) => {
 
             // to redirect user to login page when token  expires

@@ -5,11 +5,16 @@ import Home from './Pages/Home';
 import Explore from './Pages/Explore';
 import Library from './Pages/Library';
 import Login from './Auth/Login'
+import { useEffect, useState } from 'react';
 
 
-const code = new URLSearchParams(window.location.search).get('code')
+const codes = new URLSearchParams(window.location.search).get('code')
 
 function App() {
+  const [code, setCode] = useState(codes);
+  useEffect(() => {
+    setCode(codes)
+  }, [])
   console.log("app")
   return (
     code ?
@@ -19,7 +24,7 @@ function App() {
           {code}
           <Switch>
             <Route exact path='/'><Home code={code} /></Route>
-            {/* <Route exact path='/Pages/Home'><Home code={code}></Home></Route> */}
+            <Route exact path='/Pages/Home'><Home code={code}></Home></Route>
             <Route path='/Pages/Explore' component={Explore}></Route>
             <Route path='/Pages/Library' component={Library}></Route>
           </Switch>
