@@ -6,26 +6,32 @@ import Explore from './Pages/Explore';
 import Library from './Pages/Library';
 import Login from './Auth/Login'
 import { useEffect, useState } from 'react';
+import useAuth from './Auth/useAuth'
 
 
-const codes = new URLSearchParams(window.location.search).get('code')
+
+const hash = new URLSearchParams(window.location.search).get('code')
 
 function App() {
-  const [code, setCode] = useState(codes);
+  const [code, setCode] = useState(null);
+  const accessToken = useAuth(code);
+
   useEffect(() => {
-    setCode(codes)
+    if (hash) {
+      setCode(hash)
+    }
+
   }, [])
-  console.log("app")
+
   return (
     code ?
       <Router>
         <div className="App">
           <Header />
-          {code}
           <Switch>
-            <Route exact path='/'><Home code={code} /></Route>
-            <Route exact path='/Pages/Home'><Home code={code}></Home></Route>
-            <Route path='/Pages/Explore' component={Explore}></Route>
+            <Route exact path='/'><Home code={accessToken} /></Route>
+            <Route exact path='/Pages/Home'><Home code={accessToken}></Home></Route>
+            <Route path='/Pages/Explore'> <Explore code={accessToken} /></Route>
             <Route path='/Pages/Library' component={Library}></Route>
           </Switch>
 
