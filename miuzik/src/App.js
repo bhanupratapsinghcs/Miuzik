@@ -13,18 +13,17 @@ import useAuth from './Auth/useAuth'
 const hash = new URLSearchParams(window.location.search).get('code')
 
 function App() {
-  const [code, setCode] = useState(null);
-  const accessToken = useAuth(code);
+  // const [code, setCode] = useState(null);
+  const accessToken = useAuth(hash);
 
-  useEffect(() => {
-    if (hash) {
-      setCode(hash)
-    }
-
-  }, [])
+  // useEffect(() => {
+  //   if (hash) {
+  //     setCode(hash)
+  //   }
+  // }, [])
 
   return (
-    code ?
+    hash ?
       <Router>
         <div className="App">
           <Header />
