@@ -1,33 +1,19 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
+import Recommendation from '../Components/Lists/Recommendations'
+import NewRelease from '../Components/Lists/NewReleases'
 
-function Home() {
+function Home({ code }) {
     return (
 
-        /*      This page is For Home related Code.     ! Note: before deletion discuss your approach once      */
+        <>
+            <Container fixed>
+                <Recommendation code={code}></Recommendation>
+                <NewRelease code={code}></NewRelease>
+            </Container>
 
-        <div style={{backgroundColor:'black'}}>
-            <h3 style={{color: 'white'}}>Home</h3>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-        </div>
+        </>
+
     )
 }
 
