@@ -7,7 +7,7 @@ export default function TrackSearchResults({ track }) {
             <img src={track.albumUrl} style={{height: "64px", width: "64px"}} />
             <div className="innerRight">
                 <div className="title">{track.title}</div>
-                <div className="artist">{track.artist}</div>
+                <div className="artist" style={{color:"grey"}}>{track.artist}</div>
             </div>
         </div>
     )
