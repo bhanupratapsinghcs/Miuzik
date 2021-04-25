@@ -1,0 +1,5 @@
+.container {
+    flex-direction: row;
+    margin: 2px;
+    justify-content: space-between
+}
