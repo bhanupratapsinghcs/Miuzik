@@ -1,12 +1,58 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import './Header.css';
 import * as Icons from '@material-ui/icons';
 import * as CoreIcons from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import SpotifyWebApi from "spotify-web-api-node";
+import TrackSearchResults from './Lists/TrackSearchResults'
 
-function Header() {
+const spotifyApi = new SpotifyWebApi({
+    clientId: '0adaf2a4ad6248869d5b1acf78494f58',
+})
+
+function Header({ code }) {
 
     // // const [btn, btnhandler]= useState('header_inputButton')
+
+    /*      Related to Search Bar       */
+    const accessToken = code;
+
+    const [ search, setSearch ] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    console.log(searchResults)
+
+    useEffect(() => {
+        if (!accessToken) return
+        spotifyApi.setAccessToken(accessToken)
+    }, [accessToken])
+
+    useEffect(() => {
+        if(!search) return setSearchResults([])
+        if (!accessToken) return
+        
+        let cancel = false
+
+        spotifyApi.searchTracks(search).then(res => {
+            if (cancel) return     /*    cancel is used to stop updating all the time while typing updates only when typing stops   */
+            setSearchResults(
+            
+                res.body.tracks.items.map(track => {
+                    const smallestAlbumImage = track.album.images.reduce((smallest, image) => {
+                        if (image.height < smallest.height) return image
+                        return smallest
+                    }, track.album.images[0])  /*      here we are trying to return the smaller size image      */
+
+                    return{
+                        artist: track.artists[0].name,  /*       here we are lysting the information related to songs      */
+                        title: track.name,
+                        uri: track.uri,
+                        albumUrl: smallestAlbumImage.url
+                     }
+                })
+            )
+        })
+        return () => cancel = true
+    }, [search, accessToken])
 
     /*      handling clicks over the search bar and back button while inputting the text    */
 
@@ -64,7 +110,12 @@ function Header() {
 
             <div className="header_input">
                 <Icons.KeyboardBackspace onClick={backToList} className='header_inputButton' />
-                <input type="text" placeholder="Search" />
+                <input type="" placeholder="Search Songs/Artists" value={search} onChange={e => setSearch(e.target.value)} />
+            </div>
+            <div className="searchList">
+                {searchResults.map(track => (
+                    <TrackSearchResults track = {track} key = {track.uri} />
+                ))}
             </div>
 
             {screenSizeStatus
