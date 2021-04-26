@@ -1,19 +1,28 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
 import Recommendation from '../Components/Lists/Recommendations'
 import NewRelease from '../Components/Lists/NewReleases'
+import { makeStyles } from '@material-ui/core'
 
-function Home({ code }) {
+const useStyle = makeStyles({
+    root: {
+        backgroundColor: "#000",
+        height: 1000
+    },
+})
+
+
+function Home({ code, setTrack }) {
+
+    const classes = useStyle()
+    // console.log(code)
+
     return (
-
         <>
-            <Container fixed>
-                <Recommendation code={code}></Recommendation>
-                <NewRelease code={code}></NewRelease>
-            </Container>
-
+            <div className={classes.root}>
+                <Recommendation code={{ code: code, setTrack: { setTrack } }}></Recommendation>
+                <NewRelease code={{ code: code, setTrack: { setTrack } }}></NewRelease>
+            </div>
         </>
-
     )
 }
 

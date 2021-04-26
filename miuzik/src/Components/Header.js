@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './Header.css';
 import * as Icons from '@material-ui/icons';
 import * as CoreIcons from '@material-ui/core';
@@ -17,9 +17,10 @@ function Header({ code }) {
     /*      Related to Search Bar       */
     const accessToken = code;
 
-    const [ search, setSearch ] = useState('');
+    const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    console.log(searchResults)
+    const [user, setUser] = useState();
+    const [userName, setUserName] = useState();
 
     useEffect(() => {
         if (!accessToken) return
@@ -27,32 +28,45 @@ function Header({ code }) {
     }, [accessToken])
 
     useEffect(() => {
-        if(!search) return setSearchResults([])
+        if (!search) return setSearchResults([])
         if (!accessToken) return
-        
+
         let cancel = false
 
         spotifyApi.searchTracks(search).then(res => {
             if (cancel) return     /*    cancel is used to stop updating all the time while typing updates only when typing stops   */
             setSearchResults(
-            
+
                 res.body.tracks.items.map(track => {
                     const smallestAlbumImage = track.album.images.reduce((smallest, image) => {
                         if (image.height < smallest.height) return image
                         return smallest
                     }, track.album.images[0])  /*      here we are trying to return the smaller size image      */
 
-                    return{
+                    return {
                         artist: track.artists[0].name,  /*       here we are lysting the information related to songs      */
                         title: track.name,
                         uri: track.uri,
                         albumUrl: smallestAlbumImage.url
-                     }
+                    }
                 })
             )
         })
         return () => cancel = true
     }, [search, accessToken])
+
+    useEffect(() => {
+        spotifyApi.getMe()
+            .then(function (data) {
+                if (data.body.images[0] != undefined) {
+                    setUser(data.body.images[0]["url"])
+                }
+                setUserName(data.body.display_name)
+            }, function (err) {
+                console.log('Something went wrong!', err);
+            });
+
+    }, [accessToken])
 
     /*      handling clicks over the search bar and back button while inputting the text    */
 
@@ -114,7 +128,7 @@ function Header({ code }) {
             </div>
             <div className="searchList">
                 {searchResults.map(track => (
-                    <TrackSearchResults track = {track} key = {track.uri} />
+                    <TrackSearchResults track={track} key={track.uri} />
                 ))}
             </div>
 
@@ -136,8 +150,12 @@ function Header({ code }) {
             }
 
             <div className="header_icons">
-                <Icons.MoreVert className='threeDots' />
-                <CoreIcons.Avatar className='signedIn' alt="prateek sharma" src="https://avatars.githubusercontent.com/u/45096975?s=400&u=f7abed5574df1f91bf9fb36c6e7ef9b6fb990652&v=4" />
+                {/* <Icons.MoreVert className='threeDots' /> */}
+                {user ?
+                    <CoreIcons.Avatar className='signedIn' alt={userName} src={user} /> :
+                    <p>{userName}</p>
+                }
+
             </div>
         </div>
     )
