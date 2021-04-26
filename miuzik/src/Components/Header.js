@@ -59,8 +59,8 @@ function Header({ code }) {
     useEffect(() => {
         spotifyApi.getMe()
             .then(function (data) {
-                if (!data.body.images) {
-                    console.log(data.body.images[0]["url"])
+                if (data.body.images[0] != undefined) {
+                    setUser(data.body.images[0]["url"])
                 }
                 setUserName(data.body.display_name)
             }, function (err) {
