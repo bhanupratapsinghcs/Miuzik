@@ -5,8 +5,8 @@ import Home from './Pages/Home';
 import Explore from './Pages/Explore';
 import Library from './Pages/Library';
 import Login from './Auth/Login'
-import { useEffect, useState } from 'react';
 import useAuth from './Auth/useAuth'
+import Player from './Components/Player'
 
 
 
@@ -33,7 +33,9 @@ function App() {
             <Route path='/Pages/Explore'> <Explore accessToken={accessToken} /></Route>
             <Route path='/Pages/Library' component={Library}></Route>
           </Switch>
-
+          <div>
+            <Player accessToken={accessToken} />
+          </div>
         </div>
       </Router> :
       <Login></Login>
