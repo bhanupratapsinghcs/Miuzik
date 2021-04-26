@@ -153,7 +153,7 @@ function Header({ code }) {
             <div className="header_icons">
                 {/* <Icons.MoreVert className='threeDots' /> */}
                 {user ?
-                    <CoreIcons.Avatar className='signedIn' alt="prateek sharma" src={user} /> :
+                    <CoreIcons.Avatar className='signedIn' alt={userName} src={user} /> :
                     <p>{userName}</p>
                 }
 
