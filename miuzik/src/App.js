@@ -26,7 +26,7 @@ function App() {
     hash ?
       <Router>
         <div className="App">
-          <Header />
+          <Header code={accessToken}/>
           <Switch>
             <Route exact path='/'><Home code={accessToken} /></Route>
             <Route exact path='/Pages/Home'><Home code={accessToken}></Home></Route>
