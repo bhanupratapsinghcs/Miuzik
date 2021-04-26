@@ -42,6 +42,18 @@
     /* border-radius: 5px; */
 }
 
+.searchList {
+    position: fixed;
+    left: 29vw;
+    top: 60px;
+    width: 45vw;
+    background-color: rgb(29, 28, 28);
+    height: auto;
+    max-height: 400px;
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
 .header_input > input{
     flex: 1;    /* increases the width of the input */
     border: none;

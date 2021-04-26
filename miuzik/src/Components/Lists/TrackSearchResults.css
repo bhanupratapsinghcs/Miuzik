@@ -1,0 +1,12 @@
+.container {
+    flex-direction: row;
+    margin: 10px;
+    justify-content: space-between
+}
+
+.innerRight {
+    float: right;
+    /* flex: 0.8; */
+    width: 86%;
+    padding: 10px;
+}
