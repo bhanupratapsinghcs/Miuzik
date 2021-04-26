@@ -7,9 +7,8 @@ const spotifyApi = new SpotifyWebApi({
 })
 
 export default function Recommendations({ code }) {
-    const accessToken = code;
+    const accessToken = code.code.code;
     const [newReleases, setNewReleases] = useState([]);
-
     useEffect(() => {
         if (!accessToken) return
         spotifyApi.setAccessToken(accessToken)
@@ -37,7 +36,7 @@ export default function Recommendations({ code }) {
     }, [accessToken])
     return (
         <div>
-            <BlockList data={{ title: "New Release", tracks: newReleases }}></BlockList>
+            <BlockList data={{ title: "New Release", tracks: newReleases, setTrack: code.code.setTrack }}></BlockList>
         </div >
     )
 }

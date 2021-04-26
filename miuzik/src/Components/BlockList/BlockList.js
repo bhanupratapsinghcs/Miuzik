@@ -52,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
 export default function BlockList(props) {
 
     const classes = useStyles()
+    // console.log(props)
+    const handleClick = (res) => {
+        props.data.setTrack.setTrack(res)
+    }
     return (
         <div>
             <Container fixed className={classes.container}>
@@ -71,7 +75,7 @@ export default function BlockList(props) {
                                         title: classes.title,
                                     }}
                                     actionIcon={
-                                        <IconButton aria-label={`star ${track.title}`}>
+                                        <IconButton aria-label={`star ${track.title}`} onClick={e => handleClick(track.uri)}>
                                             <PlayArrowIcon className={classes.title} />
                                         </IconButton>
                                     }

@@ -21,7 +21,6 @@ function Header({ code }) {
     const [searchResults, setSearchResults] = useState([]);
     const [user, setUser] = useState();
     const [userName, setUserName] = useState();
-    console.log(searchResults)
 
     useEffect(() => {
         if (!accessToken) return
