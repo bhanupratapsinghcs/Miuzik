@@ -20,6 +20,7 @@ function Header({ code }) {
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [user, setUser] = useState();
+    const [userName, setUserName] = useState();
     console.log(searchResults)
 
     useEffect(() => {
@@ -58,7 +59,10 @@ function Header({ code }) {
     useEffect(() => {
         spotifyApi.getMe()
             .then(function (data) {
-                setUser(data.body.images[0]["url"])
+                if (!data.body.images) {
+                    console.log(data.body.images[0]["url"])
+                }
+                setUserName(data.body.display_name)
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
@@ -148,7 +152,11 @@ function Header({ code }) {
 
             <div className="header_icons">
                 {/* <Icons.MoreVert className='threeDots' /> */}
-                <CoreIcons.Avatar className='signedIn' alt="prateek sharma" src={user} />
+                {user ?
+                    <CoreIcons.Avatar className='signedIn' alt="prateek sharma" src={user} /> :
+                    <p>{userName}</p>
+                }
+
             </div>
         </div>
     )
