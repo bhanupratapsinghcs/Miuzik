@@ -7,6 +7,7 @@ import Library from './Pages/Library';
 import Login from './Auth/Login'
 import useAuth from './Auth/useAuth'
 import Player from './Components/Player'
+import { useState } from 'react';
 
 
 
@@ -15,6 +16,11 @@ const hash = new URLSearchParams(window.location.search).get('code')
 function App() {
   // const [code, setCode] = useState(null);
   const accessToken = useAuth(hash);
+  const [trackResults, setTrackResults] = useState()
+
+  const setTrack = (res) => {
+    setTrackResults(res)
+  }
 
   // useEffect(() => {
   //   if (hash) {
@@ -26,15 +32,15 @@ function App() {
     hash ?
       <Router>
         <div className="App">
-          <Header code={accessToken}/>
+          <Header code={accessToken} />
           <Switch>
-            <Route exact path='/'><Home code={accessToken} /></Route>
-            <Route exact path='/Pages/Home'><Home code={accessToken}></Home></Route>
-            <Route path='/Pages/Explore'> <Explore accessToken={accessToken} /></Route>
+            <Route exact path='/'><Home code={{ code: accessToken, setTrack: { setTrack } }} /></Route>
+            <Route exact path='/Pages/Home'><Home code={{ code: accessToken, setTrack: { setTrack } }}></Home></Route>
+            <Route path='/Pages/Explore'> <Explore code={{ code: accessToken, setTrack: { setTrack } }} /></Route>
             <Route path='/Pages/Library' component={Library}></Route>
           </Switch>
-          <div>
-            <Player accessToken={accessToken} />
+          <div style={{ "position": "fixed", "bottom": "0px", "width": "100%" }}>
+            <Player accessToken={accessToken} trackResults={trackResults} />
           </div>
         </div>
       </Router> :
