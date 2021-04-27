@@ -83,6 +83,7 @@ function Header({ code }) {
         const input = document.getElementsByClassName('header_input');
         input[0].style.display = 'none';
         setSearchResults([]);           /*      making the search list empty whenever back arrow is clicked     */
+        setSearch('');
     }
 
 
