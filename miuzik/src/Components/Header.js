@@ -82,6 +82,7 @@ function Header({ code }) {
         list[0].style.display = 'flex';
         const input = document.getElementsByClassName('header_input');
         input[0].style.display = 'none';
+        setSearchResults([]);           
     }
 
 
