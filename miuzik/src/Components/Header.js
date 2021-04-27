@@ -80,6 +80,8 @@ function Header({ code, setTrack }) {
         list[0].style.display = 'flex';
         const input = document.getElementsByClassName('header_input');
         input[0].style.display = 'none';
+        setSearchResults([]);           /*      making the search list empty whenever back arrow is clicked     */
+        setSearch('');                  /*      # emptying the search query whenever the Search Bar is re-visited after clicking the back button      */
     }
 
 
