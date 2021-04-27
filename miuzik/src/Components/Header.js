@@ -10,7 +10,7 @@ const spotifyApi = new SpotifyWebApi({
     clientId: '0adaf2a4ad6248869d5b1acf78494f58',
 })
 
-function Header({ code }) {
+function Header({ code, setTrack }) {
 
     // // const [btn, btnhandler]= useState('header_inputButton')
 
@@ -30,6 +30,16 @@ function Header({ code }) {
     useEffect(() => {
         if (!search) return setSearchResults([])
         if (!accessToken) return
+
+        spotifyApi.getMe()
+            .then(function (data) {
+                if (data.body.images[0] != undefined) {
+                    setUser(data.body.images[0]["url"])
+                }
+                setUserName(data.body.display_name)
+            }, function (err) {
+                console.log('Something went wrong!', err);
+            });
 
         let cancel = false
 
@@ -55,18 +65,6 @@ function Header({ code }) {
         return () => cancel = true
     }, [search, accessToken])
 
-    useEffect(() => {
-        spotifyApi.getMe()
-            .then(function (data) {
-                if (data.body.images[0] != undefined) {
-                    setUser(data.body.images[0]["url"])
-                }
-                setUserName(data.body.display_name)
-            }, function (err) {
-                console.log('Something went wrong!', err);
-            });
-
-    }, [accessToken])
 
     /*      handling clicks over the search bar and back button while inputting the text    */
 
@@ -128,7 +126,7 @@ function Header({ code }) {
             </div>
             <div className="searchList">
                 {searchResults.map(track => (
-                    <TrackSearchResults track={track} key={track.uri} />
+                    <TrackSearchResults track={track} setTrack={setTrack} key={track.uri} />
                 ))}
             </div>
 

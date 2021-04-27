@@ -32,7 +32,7 @@ function App() {
     hash ?
       <Router>
         <div className="App">
-          <Header code={accessToken} />
+          <Header code={accessToken} setTrack={setTrack} />
           <Switch>
             <Route exact path='/'><Home code={{ code: accessToken, setTrack: { setTrack } }} /></Route>
             <Route exact path='/Pages/Home'><Home code={{ code: accessToken, setTrack: { setTrack } }}></Home></Route>
