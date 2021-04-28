@@ -37,7 +37,7 @@ function App() {
             <Route exact path='/'><Home code={{ code: accessToken, setTrack: { setTrack } }} /></Route>
             <Route exact path='/Pages/Home'><Home code={{ code: accessToken, setTrack: { setTrack } }}></Home></Route>
             <Route path='/Pages/Explore'> <Explore code={{ code: accessToken, setTrack: { setTrack } }} /></Route>
-            <Route path='/Pages/Library' component={Library}></Route>
+            <Route path='/Pages/Library'><Library code={{ code: accessToken, setTrack: { setTrack } }} ></Library></Route>
           </Switch>
           <div style={{ "position": "fixed", "bottom": "0px", "width": "100%" }}>
             <Player accessToken={accessToken} trackResults={trackResults} />
