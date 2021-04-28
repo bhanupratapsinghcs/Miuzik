@@ -1,12 +1,14 @@
 import React from 'react'
 import Recommendation from '../Components/Lists/Recommendations'
 import NewRelease from '../Components/Lists/NewReleases'
+import FeaturedPlaylist from '../Components/Lists/FeaturedPlaylist'
 import { makeStyles } from '@material-ui/core'
+import Playlist from '../Components/Lists/Playlist'
 
 const useStyle = makeStyles({
     root: {
         backgroundColor: "#000",
-        height: 1000
+        height: 1800
     },
 })
 
@@ -21,6 +23,8 @@ function Home({ code, setTrack }) {
             <div className={classes.root}>
                 <Recommendation code={{ code: code, setTrack: { setTrack } }}></Recommendation>
                 <NewRelease code={{ code: code, setTrack: { setTrack } }}></NewRelease>
+                <FeaturedPlaylist code={{ code: code, setTrack: { setTrack } }}></FeaturedPlaylist>
+                <Playlist code={{ code: code, setTrack: { setTrack } }}></Playlist>
             </div>
         </>
     )
