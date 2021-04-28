@@ -6,7 +6,7 @@ const spotifyApi = new SpotifyWebApi({
     clientId: '0adaf2a4ad6248869d5b1acf78494f58',
 })
 
-export default function Recommendations({ code }) {
+export default function RecentlyPlay({ code }) {
     // console.log(code.setTrack)
     const accessToken = code.code;
     const [recent, setRecent] = useState([]);

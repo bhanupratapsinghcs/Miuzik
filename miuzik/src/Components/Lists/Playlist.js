@@ -6,7 +6,7 @@ const spotifyApi = new SpotifyWebApi({
     clientId: '0adaf2a4ad6248869d5b1acf78494f58',
 })
 
-export default function Recommendations({ code }) {
+export default function Playlist({ code }) {
     const accessToken = code.code.code;
     const [playlist, setPlaylist] = useState([]);
     const [tracks, setTracks] = useState([])
