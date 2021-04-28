@@ -25,12 +25,6 @@ function Header({ code, setTrack }) {
     useEffect(() => {
         if (!accessToken) return
         spotifyApi.setAccessToken(accessToken)
-    }, [accessToken])
-
-    useEffect(() => {
-        if (!search) return setSearchResults([])
-        if (!accessToken) return
-
         spotifyApi.getMe()
             .then(function (data) {
                 if (data.body.images[0] != undefined) {
@@ -40,6 +34,12 @@ function Header({ code, setTrack }) {
             }, function (err) {
                 console.log('Something went wrong!', err);
             });
+    }, [accessToken])
+
+    useEffect(() => {
+        if (!search) return setSearchResults([])
+        if (!accessToken) return
+
 
         let cancel = false
 
@@ -63,7 +63,7 @@ function Header({ code, setTrack }) {
             )
         })
         return () => cancel = true
-    }, [search, accessToken])
+    }, [accessToken, search])
 
 
     /*      handling clicks over the search bar and back button while inputting the text    */
