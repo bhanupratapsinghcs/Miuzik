@@ -6,7 +6,7 @@ import Recent from '../Components/Lists/RecentlyPlay'
 const useStyle = makeStyles({
     root: {
         backgroundColor: "#000",
-        height: 1800
+        height: 1000
     },
 })
 
