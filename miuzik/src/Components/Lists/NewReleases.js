@@ -17,7 +17,7 @@ export default function Recommendations({ code }) {
 
     useEffect(() => {
         if (!accessToken) return;
-        spotifyApi.getNewReleases({ limit: 10, offset: 0, country: 'IN' })
+        spotifyApi.getNewReleases({ limit: 20, offset: 1, country: 'IN' })
             .then(data => {
                 // console.log(data.body.albums.items)
                 setNewReleases(data.body.albums.items.map(track => {
