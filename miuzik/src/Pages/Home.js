@@ -2,8 +2,8 @@ import React from 'react'
 import Recommendation from '../Components/Lists/Recommendations'
 import NewRelease from '../Components/Lists/NewReleases'
 import FeaturedPlaylist from '../Components/Lists/FeaturedPlaylist'
-import { makeStyles } from '@material-ui/core'
 import Playlist from '../Components/Lists/Playlist'
+import { makeStyles } from '@material-ui/core'
 
 const useStyle = makeStyles({
     root: {
