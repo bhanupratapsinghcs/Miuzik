@@ -68,22 +68,23 @@ export default function BlockList(props) {
                 <div className={classes.root}>
                     <GridList className={classes.gridList} cols={6} style={{}}>
                         {props.data.tracks.map((track) => (
-                            <GridListTile key={track.uri} onClick={e => handleClick(track.uri)}>
-                                <img src={track.albumUrl} alt={track.title} style={{ "width": "200px", "height": "200px" }} />
-                                <GridListTileBar
-                                    // title={track.title}
-                                    title={track.artist}
-                                    classes={{
-                                        root: classes.titleBar,
-                                        title: classes.title,
-                                    }}
-                                    actionIcon={
-                                        <IconButton aria-label={`star ${track.title}`} onClick={e => handleClick(track.uri)}>
-                                            <PlayArrowIcon className={classes.title} />
-                                        </IconButton>
-                                    }
-                                />
-                            </GridListTile>
+                            track ?
+                                <GridListTile key={track.uri} onClick={e => handleClick(track.uri)}>
+                                    <img src={track.albumUrl} alt={track.title} style={{ "width": "200px", "height": "200px" }} />
+                                    <GridListTileBar
+                                        // title={track.title}
+                                        title={track.artist}
+                                        classes={{
+                                            root: classes.titleBar,
+                                            title: classes.title,
+                                        }}
+                                        actionIcon={
+                                            <IconButton aria-label={`star ${track.title}`} onClick={e => handleClick(track.uri)}>
+                                                <PlayArrowIcon className={classes.title} />
+                                            </IconButton>
+                                        }
+                                    />
+                                </GridListTile> : null
                         ))}
                     </GridList>
                 </div>
