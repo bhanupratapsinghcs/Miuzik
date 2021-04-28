@@ -18,21 +18,30 @@ export default function Recommendations({ code }) {
 
     useEffect(() => {
         if (!accessToken) return;
-        console.log(accessToken)
-        spotifyApi.getMyRecentlyPlayedTracks({
-            limit: 5
-        }).then(function (data) {
-            // Output items
-            console.log("Your 20 most recently played tracks are:");
-            data.body.items.forEach(item => console.log(item.track));
-        }, function (err) {
-            console.log('Something went wrong!', err);
-        });
+        const temp = []
+        spotifyApi.getMyRecentlyPlayedTracks()
+            .then(data => {
+                setRecent(data.body.items.map(track => {
+                    if (temp.indexOf(track.track.uri) == -1) {
+                        temp.push(track.track.uri)
+                        return {
+                            artist: track.track.artists[0].name,
+                            title: track.track.name,
+                            uri: track.track.uri,
+                            albumUrl: track.track.album.images[1].url,
+                        }
+                    }
 
+                }));
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [accessToken])
+    // console.log(recent)
     return (
         <div>
-            <BlockList data={{ title: "Recently", tracks: recent, setTrack: code.setTrack }}></BlockList>
+            <BlockList data={{ title: "Recently played", tracks: recent, setTrack: code.setTrack }}></BlockList>
         </div >
     )
 }
