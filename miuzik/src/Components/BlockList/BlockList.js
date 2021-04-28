@@ -73,7 +73,8 @@ export default function BlockList(props) {
                                     <img src={track.albumUrl} alt={track.title} style={{ "width": "200px", "height": "200px" }} />
                                     <GridListTileBar
                                         // title={track.title}
-                                        title={track.artist}
+                                        title={track.title}
+                                        subtitle={track.artist}
                                         classes={{
                                             root: classes.titleBar,
                                             title: classes.title,
