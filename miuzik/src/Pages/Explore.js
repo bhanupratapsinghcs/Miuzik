@@ -18,12 +18,12 @@ function Explore({ code, setTrack }) {
 
     return (
         <>
-            <Container className={classes.root}>
+            <div className={classes.root}>
                 <FeaturedPlaylist code={{ code: code, setTrack: { setTrack } }}></FeaturedPlaylist>
                 <Playlist code={{ code: code, setTrack: { setTrack } }}></Playlist>
                 <NewRelease code={{ code: code, setTrack: { setTrack } }}></NewRelease>
                 <Recommendation code={{ code: code, setTrack: { setTrack } }}> </Recommendation>
-            </Container>
+            </div>
 
         </>
     )
