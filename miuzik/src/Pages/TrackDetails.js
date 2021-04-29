@@ -13,7 +13,7 @@ const useStyle = makeStyles({
 })
 
 
-function Home({ code, setTrack }) {
+function Details({ code, setTrack }) {
 
     const classes = useStyle()
     // console.log(code)
@@ -30,4 +30,4 @@ function Home({ code, setTrack }) {
     )
 }
 
-export default Home
+export default Details

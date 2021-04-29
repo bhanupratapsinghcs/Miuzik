@@ -1,11 +1,21 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core'
+import Recent from '../Components/Lists/RecentlyPlay'
 
-function Library() {
+
+const useStyle = makeStyles({
+    root: {
+        backgroundColor: "#000",
+        height: 1000
+    },
+})
+
+function Library({ code, setTrack }) {
+    const classes = useStyle()
     return (
-        /*      This page is for Library related Code      ! Note: before deletion discuss your approach once       */
 
-        <div>
-            <h3 style={{color: 'white'}}>Library</h3>
+        <div className={classes.root}>
+            <Recent code={code} setTrack={setTrack}></Recent>
         </div>
     )
 }

@@ -3,10 +3,10 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import BlockList from '../BlockList/BlockList'
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: '0adaf2a4ad6248869d5b1acf78494f58',
+    clientId: process.env.REACT_APP_CLIENT_ID,
 })
 
-export default function Recommendations({ code }) {
+export default function NewReleases({ code }) {
     const accessToken = code.code.code;
     const [newReleases, setNewReleases] = useState([]);
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function Recommendations({ code }) {
 
     useEffect(() => {
         if (!accessToken) return;
-        spotifyApi.getNewReleases({ limit: 10, offset: 0, country: 'IN' })
+        spotifyApi.getNewReleases({ limit: 20, offset: 1, country: 'IN' })
             .then(data => {
                 // console.log(data.body.albums.items)
                 setNewReleases(data.body.albums.items.map(track => {
