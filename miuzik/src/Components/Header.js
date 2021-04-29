@@ -117,7 +117,7 @@ function Header({ code, setTrack }) {
         <div className={scrollStatus ? 'header active' : 'header'}>
             <>
                 <Link to='/' className="header_left">
-                    <img className='header-logo' src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Youtube_Music_logo.svg" alt="Header Youtube logo" />
+                    <img className='header-logo' src="https://user-images.githubusercontent.com/868109/63057127-5d3e8780-be9e-11e9-9488-bf280a5ff1ed.png" alt="Header Youtube logo" />
                     <h1 className='header-logo-text'>Miuzik</h1>
                 </Link>
             </>
