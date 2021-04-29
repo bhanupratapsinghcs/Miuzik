@@ -7,10 +7,10 @@ import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResults from './Lists/TrackSearchResults'
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: '0adaf2a4ad6248869d5b1acf78494f58',
+    clientId: process.env.REACT_APP_CLIENT_ID,
 })
 
-function Header({ code }) {
+function Header({ code, setTrack }) {
 
     // // const [btn, btnhandler]= useState('header_inputButton')
 
@@ -25,11 +25,21 @@ function Header({ code }) {
     useEffect(() => {
         if (!accessToken) return
         spotifyApi.setAccessToken(accessToken)
+        spotifyApi.getMe()
+            .then(function (data) {
+                if (data.body.images[0] != undefined) {
+                    setUser(data.body.images[0]["url"])
+                }
+                setUserName(data.body.display_name)
+            }, function (err) {
+                console.log('Something went wrong!', err);
+            });
     }, [accessToken])
 
     useEffect(() => {
         if (!search) return setSearchResults([])
         if (!accessToken) return
+
 
         let cancel = false
 
@@ -53,20 +63,8 @@ function Header({ code }) {
             )
         })
         return () => cancel = true
-    }, [search, accessToken])
+    }, [accessToken, search])
 
-    useEffect(() => {
-        spotifyApi.getMe()
-            .then(function (data) {
-                if (data.body.images[0] != undefined) {
-                    setUser(data.body.images[0]["url"])
-                }
-                setUserName(data.body.display_name)
-            }, function (err) {
-                console.log('Something went wrong!', err);
-            });
-
-    }, [accessToken])
 
     /*      handling clicks over the search bar and back button while inputting the text    */
 
@@ -119,8 +117,8 @@ function Header({ code }) {
         <div className={scrollStatus ? 'header active' : 'header'}>
             <>
                 <Link to='/' className="header_left">
-                    <img className='header-logo' src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Youtube_Music_logo.svg" alt="Header Youtube logo" />
-                    <h1 className='header-logo-text'>Music</h1>
+                    <img className='header-logo' src="https://user-images.githubusercontent.com/868109/63057127-5d3e8780-be9e-11e9-9488-bf280a5ff1ed.png" alt="Header Youtube logo" />
+                    <h1 className='header-logo-text'>Miuzik</h1>
                 </Link>
             </>
 
@@ -130,7 +128,7 @@ function Header({ code }) {
             </div>
             <div className="searchList">
                 {searchResults.map(track => (
-                    <TrackSearchResults track={track} key={track.uri} />
+                    <TrackSearchResults track={track} setTrack={setTrack} key={track.uri} />
                 ))}
             </div>
 

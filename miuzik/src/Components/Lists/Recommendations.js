@@ -3,7 +3,7 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import BlockList from '../BlockList/BlockList'
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: '0adaf2a4ad6248869d5b1acf78494f58',
+    clientId: process.env.REACT_APP_CLIENT_ID,
 })
 
 export default function Recommendations({ code }) {
@@ -19,7 +19,7 @@ export default function Recommendations({ code }) {
         if (!accessToken) return;
         spotifyApi.getRecommendations({
             min_energy: 0.4,
-            seed_artists: ['6mfK6Q2tzLMEchAr0e9Uzu', '4DYFVNKZ1uixa6SQTvzQwJ'],
+            seed_artists: ['56SjZARoEvag3RoKWIb16j', '6eUKZXaKkcviH0Ku9w2n3V', '0du5cEVh5yTK9QJze8zA0C', '07YZf4WDAMNwqr4jfgOZ8y', '5yNuLEnJxpmw5oBODqLeqX'],
             min_popularity: 50
         }).then(data => {
             setRecommendation(data.body.tracks.map(track => {
