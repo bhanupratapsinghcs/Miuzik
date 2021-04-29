@@ -118,7 +118,7 @@ function Header({ code, setTrack }) {
             <>
                 <Link to='/' className="header_left">
                     <img className='header-logo' src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Youtube_Music_logo.svg" alt="Header Youtube logo" />
-                    <h1 className='header-logo-text'>Music</h1>
+                    <h1 className='header-logo-text'>Miuzik</h1>
                 </Link>
             </>
 
