@@ -3,7 +3,7 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import NormalList from '../NormalListLayout/NormalList'
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: 'process.env.REACT_APP_CLIENT_ID',
+    clientId: process.env.REACT_APP_CLIENT_ID,
 })
 
 export default function Playlist({ code }) {

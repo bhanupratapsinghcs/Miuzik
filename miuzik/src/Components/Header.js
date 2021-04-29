@@ -7,7 +7,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResults from './Lists/TrackSearchResults'
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: 'process.env.REACT_APP_CLIENT_ID',
+    clientId: process.env.REACT_APP_CLIENT_ID,
 })
 
 function Header({ code, setTrack }) {

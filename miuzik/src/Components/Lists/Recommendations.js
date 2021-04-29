@@ -3,7 +3,7 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import BlockList from '../BlockList/BlockList'
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: 'process.env.REACT_APP_CLIENT_ID',
+    clientId: process.env.REACT_APP_CLIENT_ID,
 })
 
 export default function Recommendations({ code }) {
