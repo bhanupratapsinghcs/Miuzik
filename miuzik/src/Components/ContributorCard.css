@@ -1,0 +1,52 @@
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 95px;
+    overflow:hidden;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    margin-left: -100px;
+    margin-bottom: 20px;
+    transition: .5s;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.circle img {
+    transition: .4s;
+}
+.circle img:hover {
+    transform: scale(1.1);
+}
+
+.circle:hover {
+    transform: scale(1.07);
+    box-shadow: 0 4px 8px 0 red, 0 6px 20px 0 red;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: transparent;
+    padding: 10px;
+    overflow: hidden;
+    color: lightgray !important;
+    border-radius: 7px;
+}
+.cardContainer > a {
+    display: inline-flex;
+    background-color: transparent;
+    color: lightgray;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    font-size: 17px;
+    margin-top: 20px;
+}
