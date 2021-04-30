@@ -1,0 +1,100 @@
+.container {
+    width: 95vw;
+    position: absolute;
+    top:  90px;
+    left: 50%;
+    margin-left: -47.5vw;
+    /* height: 90vh; */
+    height: auto;
+    background-color: transparent;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    background-image:url("https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-repeat: no-repeat;
+    background-size: 100vw cover;
+}
+
+.contributors {
+    text-align: center;
+    display: block;
+}
+
+.circleContainer1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px ;
+    width: 75vw;
+    margin: auto;  
+    height: auto;
+    background-color: transparent;
+}
+
+.circleContainer2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px ;
+    width: 65vw;
+    margin: auto;
+    height: auto;
+    background-color: transparent;
+}
+
+/* .btn {
+    position: relative;
+    left: 50%;
+    margin-left: -3.5em;
+    background-color: yellow;
+    color: lightgray;
+    cursor: pointer;
+    border: none;
+    border-radius: 7px;
+    width: 120px;
+    font-size: 17px;
+    margin-top: 20px;
+} */
+
+
+.btn {
+    position: relative;
+    left: 50%;
+    margin-left: -4.0em;
+    width: 120px;
+    margin-top: 30px;
+
+    border-top: 1px solid #96d1f8;
+    background: #65a9d7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+    background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+    background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+    background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+    background: -o-linear-gradient(top, #3e779d, #65a9d7);
+    padding: 0px 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+    }
+ .btn:hover {
+    border-top-color: #28597a;
+    background: #28597a;
+    color: #ccc;
+    }
+ .btn:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+    }
