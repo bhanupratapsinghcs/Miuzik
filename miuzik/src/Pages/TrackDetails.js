@@ -13,18 +13,14 @@ const useStyle = makeStyles({
 })
 
 
-function Details({ code, setTrack }) {
+function Details({ code }) {
 
     const classes = useStyle()
-    // console.log(code)
 
     return (
         <>
             <div className={classes.root}>
-                <Recommendation code={{ code: code, setTrack: { setTrack } }}></Recommendation>
-                <NewRelease code={{ code: code, setTrack: { setTrack } }}></NewRelease>
-                <FeaturedPlaylist code={{ code: code, setTrack: { setTrack } }}></FeaturedPlaylist>
-                <Playlist code={{ code: code, setTrack: { setTrack } }}></Playlist>
+
             </div>
         </>
     )

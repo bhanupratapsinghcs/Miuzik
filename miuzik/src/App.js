@@ -18,17 +18,12 @@ function App() {
   // const [code, setCode] = useState(null);
   const accessToken = useAuth(hash);
   const [trackResults, setTrackResults] = useState()
-
+  const [trackDetails, setTrackDetails] = useState()
   const setTrack = (res) => {
-    if (!res) return;
-    setTrackResults(res)
+    if (!res.uri) return;
+    setTrackResults(res.uri)
+    setTrackDetails(res)
   }
-
-  // useEffect(() => {
-  //   if (hash) {
-  //     setCode(hash)
-  //   }
-  // }, [])
 
   return (
     hash ?
@@ -40,7 +35,7 @@ function App() {
             <Route exact path='/Pages/Home'><Home code={{ code: accessToken, setTrack: { setTrack } }}></Home></Route>
             <Route path='/Pages/Explore'> <Explore code={{ code: accessToken, setTrack: { setTrack } }} /></Route>
             <Route path='/Pages/Library'><Library code={{ code: accessToken, setTrack: { setTrack } }} ></Library></Route>
-            <Route path='/Pages/Details'><Details code={{ code: accessToken, setTrack: { setTrack } }} ></Details></Route>
+            <Route path='/Pages/Details'><Details code={{ trackDetails: trackDetails }} ></Details></Route>
           </Switch>
           <div style={{ "position": "fixed", "bottom": "0px", "width": "100%" }}>
             <Player accessToken={accessToken} trackResults={trackResults} />
