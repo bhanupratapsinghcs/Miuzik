@@ -9,7 +9,7 @@ export default function Login() {
 
     const [screenSizeStatus, setScreenSizeStatus] = useState(false);
 
-    const windowResize = () => {
+    const windowResized = () => {
         if (window.innerWidth <= 980) {
             setScreenSizeStatus(true);
             document.getElementsByClassName('circleContainer1')[0].style.flexDirection = "column";
@@ -22,14 +22,14 @@ export default function Login() {
     }
     
 
-    window.addEventListener('resize', windowResize);
+    window.addEventListener('resize', windowResized);
     
 
     return (
         <div className="container">
             
             <div className="contributors">
-                <div style={{color: "white", border: "2px solid grey", borderRadius: "7px"}}><strong style={{fontSize: "20px", textDecoration: "underline"}}>! Instructions   </strong> <br/>This project is based on Spotify API so you will need a Premium Account of Spotify to Play Music</div>
+                <div style={{color: "white", border: "2px solid grey", borderRadius: "7px", backgroundColor: "rgba(0, 0, 0, 0.4)"}}><strong style={{fontSize: "20px", textDecoration: "underline"}}>! Instructions   </strong> <br/>This project is based on Spotify API so you will need a Premium Account of Spotify to Play Music</div>
                 <div className="btn">
                     <Button href={AUTH_URL}>Login
                     </Button>
