@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
     details: {
         display: 'flex',
         width: 200,
+        alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'column',
     },
     content: {
@@ -59,7 +61,7 @@ function Details({ code }) {
                 <Card className={classes.card}>
                     <div className={classes.details}>
                         <CardContent className={classes.content}>
-                            <Typography component="h5" variant="h5">
+                            <Typography component="h4" variant="h4">
                                 {code.trackDetails.title}
                             </Typography>
                             <Divider />
