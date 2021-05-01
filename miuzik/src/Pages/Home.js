@@ -8,7 +8,8 @@ import { makeStyles } from '@material-ui/core'
 const useStyle = makeStyles({
     root: {
         backgroundColor: "#000",
-        height: 1800
+        height: 1800,
+        width: "100%"
     },
 })
 
