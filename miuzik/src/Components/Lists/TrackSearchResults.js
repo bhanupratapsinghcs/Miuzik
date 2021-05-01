@@ -6,7 +6,7 @@ export default function TrackSearchResults({ track, setTrack }) {
         setTrack(res)
     }
     return (
-        <div className="trackContainer" style={{ cursor: "pointer" }} onClick={() => { habdleClick(track.uri) }}>
+        <div className="trackContainer" style={{ cursor: "pointer" }} onClick={() => { habdleClick(track) }}>
             <img src={track.albumUrl} style={{ height: "64px", width: "64px" }} />
             <div className="innerRight">
                 <div className="title">{track.title}</div>
