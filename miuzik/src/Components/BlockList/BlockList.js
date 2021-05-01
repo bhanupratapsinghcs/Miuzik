@@ -10,6 +10,8 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import { Link } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -69,7 +71,7 @@ export default function BlockList(props) {
                     <GridList className={classes.gridList} cols={6} style={{}}>
                         {props.data.tracks.map((track) => (
                             track ?
-                                <GridListTile key={track.uri} onClick={e => handleClick(track.uri)}>
+                                <GridListTile key={track.uri} onClick={e => handleClick(track)}>
                                     <img src={track.albumUrl} alt={track.title} style={{ "width": "200px", "height": "200px" }} />
                                     <GridListTileBar
                                         // title={track.title}
@@ -80,12 +82,15 @@ export default function BlockList(props) {
                                             title: classes.title,
                                         }}
                                         actionIcon={
-                                            <IconButton aria-label={`star ${track.title}`} onClick={e => handleClick(track.uri)}>
-                                                <PlayArrowIcon className={classes.title} />
-                                            </IconButton>
+                                            <Link to='/Pages/Details'>
+                                                <IconButton aria-label={`star ${track.title}`} onClick={e => handleClick(track)}>
+                                                    <PlayArrowIcon className={classes.title} />
+                                                </IconButton>
+                                            </Link>
                                         }
                                     />
-                                </GridListTile> : null
+                                </GridListTile>
+                                : null
                         ))}
                     </GridList>
                 </div>

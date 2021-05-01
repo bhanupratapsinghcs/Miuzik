@@ -48,7 +48,7 @@ export default function NormalList(props) {
             <List className={classes.root} >
                 {props.data.tracks.map((track) => {
                     return (
-                        <ListItem key={track.uri} button onClick={e => handleClick(track.uri)} >
+                        <ListItem key={track.uri} button onClick={e => handleClick(track)} >
                             <ListItemAvatar>
                                 <Avatar
                                     alt={`Avatar n°${track + 1}`}
@@ -71,7 +71,7 @@ export default function NormalList(props) {
                                 }
                             />
                             <ListItemSecondaryAction>
-                                <IconButton aria-label={`star ${track.title}`} onClick={e => handleClick(track.uri)} >
+                                <IconButton aria-label={`star ${track.title}`} onClick={e => handleClick(track)} >
                                     <PlayArrowIcon className={classes.title} />
                                 </IconButton>
                             </ListItemSecondaryAction>
